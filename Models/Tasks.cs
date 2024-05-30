@@ -70,7 +70,6 @@ namespace TaskManagerBugrina.Models
                 }
             }
         }
-
         private bool done;
         public bool Done
         {
@@ -121,7 +120,7 @@ namespace TaskManagerBugrina.Models
                 return new RealyCommand(obj =>
                 {
                     IsEnable = !IsEnable;
-                    if (!IsEnable) (MainWindow.init.DataContext as ViewModels.VM_Pages).vm_tasks.taskContext.SaveChanges();
+                    if (!IsEnable) (MainWindow.init.DataContext as ViewModels.VM_Pages).vm_tasks.tasksContext.SaveChanges();
                 });
             }
         }
@@ -135,8 +134,8 @@ namespace TaskManagerBugrina.Models
                     if (MessageBox.Show("Вы уверены, что хотите удалить задачу?", "Предупреждение", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
                         (MainWindow.init.DataContext as ViewModels.VM_Pages).vm_tasks.Tasks.Remove(this);
-                        (MainWindow.init.DataContext as ViewModels.VM_Pages).vm_tasks.taskContext.Remove(this);
-                        (MainWindow.init.DataContext as ViewModels.VM_Pages).vm_tasks.taskContext.SaveChanges();
+                        (MainWindow.init.DataContext as ViewModels.VM_Pages).vm_tasks.tasksContext.Remove(this);
+                        (MainWindow.init.DataContext as ViewModels.VM_Pages).vm_tasks.tasksContext.SaveChanges();
                     }
                 });
             }
